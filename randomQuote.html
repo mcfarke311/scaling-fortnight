@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
 		<style>
 			html, body {
@@ -27,11 +28,18 @@
 	<body>
 		<div class="content-wrapper">
 			<div id="quote-plaquard">
-				<div style="display: block; overflow: hidden;">
-					<i class="fa fa-quote-left fa-3x" aria-hidden="true" style="float: left;"></i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer elementum porttitor arcu, at condimentum lorem tincidunt et. In nisl lacus, placerat in porta eget, lacinia semper mi. Aliquam rhoncus mi eu libero euismod, id sodales libero sollicitudin. Aenean consectetur quis libero non imperdiet. Quisque tincidunt vitae augue ac bibendum. Cras vitae justo in sapien gravida malesuada. Vestibulum sollicitudin nisl in tempor suscipit. Quisque varius suscipit porta. Aliquam vehicula et sapien non convallis. Vivamus in lorem eget mi volutpat bibendum. Donec tristique luctus nunc non molestie. Maecenas rutrum eleifend risus nec varius.
+				<div id="quote" style="display: block; overflow: hidden;">
+					
 				</div>
-				<button>Grab a New Quote!</button>
+				<button id="get-quote">Grab a New Quote!</button>
 			</div>
 		</div>
+		<script>
+		$(document).ready(function() {
+			$("#get-quote").on("click",function() {
+				$("#quote").html("<i class='fa fa-quote-left fa-3x'></i>");
+			});
+		});
+		</script>
 	</body>
 </html>
