@@ -3,6 +3,7 @@
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Barrio|League+Script" rel="stylesheet">
 		<style>
 			html, body {
 				width: 100%;
@@ -24,8 +25,13 @@
 				font-size: 1em;
 				border-radius: 3em;
 			}
-			#quote p {
+			#quoteText {
 				font-size: 5em;
+				font-family: 'Barrio';
+			}
+			#quoteAuthor {
+				font-size: 3em;
+				font-family: 'League Script';
 			}
 		</style>
 	</head>
@@ -43,7 +49,8 @@
 			$("#get-quote").on("click",function() {
 				$.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=?", function(json) {
 					console.log(json);
-					$("#quote").html("<i class=\"fa fa-quote-left fa-5x\" aria-hidden=\"true\"></i>"+"<p>"+json.quoteText+"</p> -- "+json.quoteAuthor);
+					$("#quote").html("<p id=\"quoteText\"><i class=\"fa fa-quote-left\" aria-hidden=\"true\"></i>"+json.quoteText+"<i class=\"fa fa-quote-right\" aria-hidden=\"true\"></i></p> <p id=\"quoteAuthor\"><b>"+json.quoteAuthor+"</b></p>"
+					);
 				});
 			});
 		});
