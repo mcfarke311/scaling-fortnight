@@ -20,8 +20,12 @@
 				width: 80%;
 				background-color: green;
 				margin: auto;
-				padding: 1em;
+				padding: 1em 3em 1em 3em;
 				font-size: 1em;
+				border-radius: 3em;
+			}
+			#quote p {
+				font-size: 5em;
 			}
 		</style>
 	</head>
@@ -37,7 +41,10 @@
 		<script>
 		$(document).ready(function() {
 			$("#get-quote").on("click",function() {
-				$("#quote").html("<i class='fa fa-quote-left fa-3x'></i>");
+				$.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=?", function(json) {
+					console.log(json);
+					$("#quote").html("<i class=\"fa fa-quote-left fa-5x\" aria-hidden=\"true\"></i>"+"<p>"+json.quoteText+"</p> -- "+json.quoteAuthor);
+				});
 			});
 		});
 		</script>
