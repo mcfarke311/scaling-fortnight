@@ -44,6 +44,7 @@
 					
 				</div>
 				<button id="get-quote">Grab a New Quote!</button>
+				<a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet this quote!</a>
 			</div>
 		</div>
 		<script>
@@ -54,6 +55,11 @@
 					$("#quote").html("<p id=\"quoteText\"><i class=\"fa fa-quote-left\" aria-hidden=\"true\"></i>"+json.quoteText+"<i class=\"fa fa-quote-right\" aria-hidden=\"true\"></i></p> <p id=\"quoteAuthor\"><b>"+json.quoteAuthor+"</b></p>"
 					);
 				});
+			});
+			$.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=?", function(json) {
+				console.log(json);
+				$("#quote").html("<p id=\"quoteText\"><i class=\"fa fa-quote-left\" aria-hidden=\"true\"></i>"+json.quoteText+"<i class=\"fa fa-quote-right\" aria-hidden=\"true\"></i></p> <p id=\"quoteAuthor\"><b>"+json.quoteAuthor+"</b></p>"
+				);
 			});
 		});
 		</script>
