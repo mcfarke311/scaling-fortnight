@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Barrio|League+Script" rel="stylesheet">
+		<style>
+			html, body {
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				display: table;
+				background-image: url("./weathered_wood.jpg");
+			}
+			.content-wrapper {
+				display: table-cell;
+				vertical-align: middle;
+				height: 100vh;
+			}
+			#quote-plaquard {
+				width: 80%;
+				background-color: white;
+				opacity: 0.7;
+				margin: auto;
+				padding: 1em 3em 1em 3em;
+				font-size: 1em;
+				border-radius: 3em;
+				box-shadow: 0 0 5em 0;
+			}
+			#quoteText {
+				font-size: 8vh;
+				font-family: 'Barrio';
+			}
+			#quoteAuthor {
+				font-size: 4vh;
+				font-family: 'League Script';
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content-wrapper">
+			<div id="quote-plaquard">
+				<div id="quote" style="display: block; overflow: hidden;">
+					
+				</div>
+				<button id="get-quote"><i class="fa fa-quote-left"></i>Grab a New Quote!<i class="fa fa-quote-right"></i></button>
+				<a id="tweet-it" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fwebgeneratorurl.ext%2F"><button>Like this one? <i class="fa fa-twitter"></i> it!</button></a>
+			</div>
+		</div>
+		<script>
+		$(document).ready(function() {
+			$("#get-quote").on("click",function() {
+				$.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=?", function(json) {
+					console.log(json);
+					$("#quote").html("<p id=\"quoteText\"><i class=\"fa fa-quote-left\" aria-hidden=\"true\"></i>"+json.quoteText+"<i class=\"fa fa-quote-right\" aria-hidden=\"true\"></i></p> <p id=\"quoteAuthor\"><b>"+json.quoteAuthor+"</b></p>"
+					);
+					$("#tweet-it").attr("href","https://twitter.com/intent/tweet?text="+json.quoteText+" - "+json.quoteAuthor+"&source=clicktotweet&related=clicktotweet")
+				});
+			});
+		});
+		</script>
+	</body>
+</html>
